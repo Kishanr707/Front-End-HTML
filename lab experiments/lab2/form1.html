@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Circular Signup Form – Ashoka Chakra</title>
+
+    <style>
+        body {
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: Arial, sans-serif;
+
+            background: linear-gradient(
+                to bottom,
+                #FF671F 0%,
+                #FF671F 33%,
+                #FFFFFF 33%,
+                #FFFFFF 66%,
+                #046A38 66%,
+                #046A38 100%
+            );
+        }
+
+        form {
+            width: 720px;
+            height: 720px;
+            border-radius: 50%;
+            padding: 40px;
+            box-sizing: border-box;
+
+            background:
+                repeating-conic-gradient(
+                    from 0deg,
+                    #06038D 0deg 10deg,
+                    #1b1f9c 10deg 15deg
+                );
+
+            box-shadow: 0 0 25px rgba(0,0,0,0.4);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        label {
+            color: white;
+            font-weight: bold;
+            margin-top: 10px;
+            font-size: 14px;
+        }
+
+        input {
+            background: transparent;
+            border: 1px solid white;
+            border-radius: 5px;
+            padding: 7px;
+            margin-top: 4px;
+            color: white;
+            outline: none;
+        }
+
+        input[type="range"] {
+            width: 100%;
+        }
+
+        .range-value {
+            color: #FFD700;
+            font-weight: bold;
+            margin-left: 8px;
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 10px;
+            border-radius: 20px;
+            border: none;
+            background-color: white;
+            color: #06038D;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #FF671F;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+
+<form>
+    <label>Name</label>
+    <input type="text" required>
+
+    <label>Date of Birth</label>
+    <input type="date" required>
+
+    <label for="age">
+        Age:
+        <span id="ageValue" class="range-value">18</span>
+    </label>
+    <input type="range" id="age" min="18" max="60" value="18">
+
+    <label>Email</label>
+    <input type="email" required>
+
+    <label>Website</label>
+    <input type="url">
+
+    <button type="submit">Signup</button>
+</form>
+
+<script>
+    const ageSlider = document.getElementById("age");
+    const ageValue = document.getElementById("ageValue");
+
+    ageSlider.addEventListener("input", function () {
+        ageValue.textContent = this.value;
+    });
+</script>
+
+</body>
+</html>
+
+
+<!-- develop an interactive webpage using html and css3 (form creation)                                                                                                           -->
