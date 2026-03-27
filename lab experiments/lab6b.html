@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Registration</title>
+    <style>
+        body {
+            background-color: powderblue;
+            font-family: Arial;
+        }
+        .form-box {
+            width: 420px;
+            margin: 50px auto;
+            padding: 25px;
+            background-color: white;
+            border-radius: 10px;
+        }
+        h2 {
+            text-align: center;
+            color: lightgreen;
+            margin-bottom: 20px;
+        }
+        label {
+            font-weight: bold;
+            margin-top: 12px;
+            display: block;
+        }
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 6px;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            box-sizing: border-box; /* Ensures padding doesn't affect width */
+            font-size: 14px;
+        }
+        input:focus, textarea:focus {
+            border-color: #2563eb;
+        }
+        input[type="radio"] {
+            width: auto;
+            margin-top: 0;
+        }
+        .buttons {
+            text-align: center;
+            margin-top: 20px;
+        }
+        button {
+            padding: 10px 18px;
+            margin: 5px;
+            border: none;
+            border-radius: 6px;
+            font-size: 14px;
+            cursor: pointer;
+        }
+        .submit-btn {
+            background-color: #2563eb;
+            color: white;
+        }
+        .submit-btn:hover {
+            background-color: #1e40af;
+        }
+        .reset-btn {
+            background-color: #9ca3af;
+            color: white;
+        }
+        .reset-btn:hover {
+            background-color: #6b7280;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-box">
+        <h2>Student Registration Form<br>Presidency University</h2>
+
+        <form onsubmit="return validateForm()">
+            <label>First Name*</label>
+            <input type="text" id="fname">
+
+            <label>Last Name*</label>
+            <input type="text" id="lname">
+
+            <label>Email*</label>
+            <input type="text" id="email">
+
+            <label>Password*</label>
+            <input type="password" id="pass">
+
+            <label>Address*</label>
+            <textarea id="addr"></textarea>
+
+            <label>Mobile Number*</label>
+            <input type="text" id="mobile">
+
+            <div class="gender">
+                <label>Gender*</label>
+                <input type="radio" name="gender" value="Male">Male
+                <input type="radio" name="gender" value="Female">Female
+            </div>
+
+            <div class="buttons">
+                <button type="submit" class="submit-btn">Submit</button>
+                <button type="reset" class="reset-btn">Cancel</button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        function validateForm() {
+            let fname = document.getElementById("fname").value;
+            let lname = document.getElementById("lname").value;
+            let email = document.getElementById("email").value;
+            let pass = document.getElementById("pass").value;
+            let addr = document.getElementById("addr").value;
+            let mobile = document.getElementById("mobile").value;
+            let gender = document.getElementsByName("gender");
+
+            if (fname == "" || fname.length < 6 || !/^[A-Za-z]+$/.test(fname)) {
+                alert("First name must be at least 6 characters and alphabets only");
+                return false;
+            }
+            if (lname == "" || !/^[A-Za-z]+$/.test(lname)) {
+                alert("Last name must contain only alphabets");
+                return false;
+            }
+            if (!/^\S+@\S+\.\S+$/.test(email)) {
+                alert("Enter valid email");
+                return false;
+            }
+            if (pass.length < 6 || !/^[A-Za-z0-9]+$/.test(pass)) {
+                alert("Password must be at least 6 characters and alphanumeric");
+                return false;
+            }
+            if (addr == "") {
+                alert("Address cannot be empty");
+                return false;
+            }
+            if (!/^[0-9]{10}$/.test(mobile)) {
+                alert("Mobile number must be 10 digits");
+                return false;
+            }
+            if (!(gender[0].checked || gender[1].checked)) {
+                alert("Select gender");
+                return false;
+            }
+
+            alert("Registration done successfully");
+            return true;
+        }
+    </script>
+</body>
+</html>
